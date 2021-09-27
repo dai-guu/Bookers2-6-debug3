@@ -1,0 +1,65 @@
+<!--投稿詳細-->
+
+<div class="body">
+  <div class="container">
+
+    <!--サクセスメッセージ-->
+    <p id="notice">
+      <%= notice %>
+    </p>
+
+    <!--コメントエラーメッセージ-->
+    <!--<div class="error">
+
+
+    <!--サイドバー-->
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'users/userinfo', user: @user %> <!--User infoの部分テンプレート-->
+        <%= render "books/newbook", book: @newbook %>
+      </div>
+
+      <!--投稿詳細-->
+      <div class="col-md-8 offset-md-1">
+
+        <h2>Book detail</h2>
+        <table class="table table-hover table-inverse">
+          <tbody>
+            <tr>
+              <td>
+              <%= link_to user_path(@user) do %>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %><br>
+                <%= @user.name %>
+              <% end %>
+              </td>
+
+              <td><!--<%#= @book.title %>-->
+              <%= link_to @book.title, book_path %> <!-- book_pathの後にid指定いらない？ -->
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+
+              <!--いいね機能-->
+
+
+
+              <% if user_signed_in? && current_user.id == @book.user_id %>
+                <td><%= link_to "Edit", edit_book_path, class: "btn btn-success btn-sm" %></td>
+                <td><%= link_to "Destroy", book_path, method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--コメント表示-->
+
+
+
+        <!--コメント入力フォーム-->
+
+      </div>
+    </div>
+
+  </div>
+</div>
