@@ -48,9 +48,11 @@
               </td>
               <td><%= link_to book.title, book_path(book.id) %></td>
               <td><%= book.body %></td>
+            <%= render "favorites/favorite", book: book %>
+           </tr>
            <% end %>
          </tbody>
-      </table>
+        </table>
        </div>
       </div>
      </div>
