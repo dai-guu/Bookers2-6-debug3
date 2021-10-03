@@ -46,15 +46,61 @@
                 <td><%= link_to "Destroy", book_path, method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
               <% end %>
               <%= render "favorites/favorite", book: @book %>  <!--いいね機能-->
+
+
+              <td><%= "コメント数 #{@book.book_comments.count}"%></td>
+
             </tr>
           </tbody>
         </table>
 
         <!--コメント表示-->
 
+                  <% @book.book_comments.each do |book_comment| %>
+                   <li class="comment">
+                   <div class="comment-body bb">
+                  <div class="comment-avatar">
+                   <div class="avatar">
+                         <%= attachment_image_tag @book.user, :profile_image, format: 'jpg', fallback: "no_image.jpg", size: "40x40" %>
+                   </div>
+                  </div>
+                <div class="comment-text">
+                    <div class="comment-author clearfix">
+                        <a href="#" class="link-author"><%= book_comment.user.name %></a>
+
+                    </div>
+                    <div class="comment-entry"><%= book_comment.comment %></div>
+                    <% if book_comment.user == current_user%>
+               <div>
+               <%= link_to "destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger pull-right" %>
+               </div>
+                   <% end %>
+
+                  </div>
+              </div>
+          </li>
+       <% end %>
 
 
-        <!--コメント入力フォーム-->
+
+
+     <!-- コメント用 form-->
+     <%= form_for [@book, @book_comment] do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+        </div>
+    </div>
+    <%= f.submit "送信" %>
+ <% end %>
+<!-- ここまで -->
+
+
+
+
+
+
+
 
       </div>
     </div>
