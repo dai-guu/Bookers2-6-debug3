@@ -46,7 +46,7 @@
                 <td><%= link_to "Destroy", book_path, method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
               <% end %>
               <%= render "favorites/favorite", book: @book %>  <!--いいね機能-->
-
+              <%#= @favorite_count = Favorite.where(book_id: params[:book_id]).count %>
 
               <td><%= "コメント数 #{@book.book_comments.count}"%></td>
 
