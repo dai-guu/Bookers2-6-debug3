@@ -66,7 +66,9 @@
                   </div>
                 <div class="comment-text">
                     <div class="comment-author clearfix">
-                        <a href="#" class="link-author"><%= book_comment.user.name %></a>
+
+                      <%= link_to book_comment.user.name, user_path(book_comment.user_id) %>
+                    <!--<a href="#" class="link-author"><%#= book_comment.user.name %></a>-->
 
                     </div>
                     <div class="comment-entry"><%= book_comment.comment %></div>
