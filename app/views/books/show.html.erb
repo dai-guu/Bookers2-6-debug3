@@ -45,8 +45,11 @@
                 <td><%= link_to "Edit", edit_book_path, class: "btn btn-success btn-sm" %></td>
                 <td><%= link_to "Destroy", book_path, method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
               <% end %>
-              <%= render "favorites/favorite", book: @book %>  <!--いいね機能-->
-              <%#= @favorite_count = Favorite.where(book_id: params[:book_id]).count %>
+          <!--<td id="favorite_buttons_<%#= @book.id %>">--->
+
+
+                <td id="favorite_<%= @book.id %>"><%= render "favorites/favorite-btn", book: @book %></td>                       <!--いいね機能-->
+
 
               <td><%= "コメント数 #{@book.book_comments.count}"%></td>
 
