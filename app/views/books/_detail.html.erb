@@ -17,8 +17,8 @@
 
 
               <% if user_signed_in? && current_user.id == book.user_id %>
-                <td><%= link_to "Edit", edit_book_path, class: "btn btn-success btn-sm" %></td>
-                <td><%= link_to "Destroy", book_path, method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
+                <td><%= link_to "Edit", edit_book_path(book), class: "btn btn-success btn-sm" %></td>
+                <td><%= link_to "Destroy", book_path(book), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
               <% end %>
           <!--<td id="favorite_buttons_<%#= @book.id %>">--->
 

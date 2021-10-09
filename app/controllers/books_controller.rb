@@ -36,7 +36,7 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def edit
     @book = Book.find(params[:id])
-        if @book.user == current_user #URLを入力しても画面に飛ばせない
+        if @book.user = current_user #URLを入力しても画面に飛ばせない
            render "edit"
         else
            redirect_to books_path
