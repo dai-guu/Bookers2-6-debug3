@@ -4,7 +4,7 @@ class BookComment < ApplicationRecord
   belongs_to :book
 
   #バリデーション
-  #validates :content, presence: true
+  validates :comment, presence: true
 
 
 end

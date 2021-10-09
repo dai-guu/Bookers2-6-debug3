@@ -1,1 +1,2 @@
-$("#comments-area").html("<%= j(render 'book_comments/index', book: @book) %>");
+$(".detail__table").html("<%= j(render 'books/detail', book: @book) %>");
+$(".comment__table").html("<%=j(render 'book_comments/index', book_comments: @book.book_comments)%>");
